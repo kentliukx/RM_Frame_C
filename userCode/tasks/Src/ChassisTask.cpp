@@ -20,8 +20,8 @@ MOTOR_INIT_t chassisMotorInit = {//四个底盘电机共用的初始化结构体
         .reductionRatio = 19.0f,
         .ctrlType = SPEED_Single,
 };
-Motor CMFL(MOTOR_ID_1,&chassisMotorInit);//定义左前轮电机
-Motor CMFR(MOTOR_ID_2,&chassisMotorInit);//定义右前轮电机
+Motor CMFL(MOTOR_ID_2,&chassisMotorInit);//定义左前轮电机
+Motor CMFR(MOTOR_ID_1,&chassisMotorInit);//定义右前轮电机
 Motor CMBL(MOTOR_ID_3,&chassisMotorInit);//定义左后轮电机
 Motor CMBR(MOTOR_ID_4,&chassisMotorInit);//定义右后轮电机
 
@@ -78,10 +78,12 @@ void WheelsSpeedCalc(float fbVelocity, float lrVelocity, float rtVelocity) {
      * @param fbVelocity,lrVelocity,rtVelocity
      * @return CMFLSpeed CMFRSpeed CMBLSpeed CMBRSpeed
      */
-    CMFLSpeed = 0;
-    CMFRSpeed = 0;
-    CMBLSpeed = 0;
-    CMBRSpeed = 0;
+
+
+    CMFLSpeed = 0.5*(fbVelocity+rtVelocity-lrVelocity);
+    CMFRSpeed = 0.5*(-fbVelocity+rtVelocity-lrVelocity);
+    CMBLSpeed = 0.5*(fbVelocity+rtVelocity+lrVelocity);
+    CMBRSpeed = 0.5*(-fbVelocity+rtVelocity+lrVelocity);
 
     //计算四个轮子角速度，单位：rad/s
     CMFLSpeed = CMFLSpeed /(WHEEL_DIAMETER/2.0f);

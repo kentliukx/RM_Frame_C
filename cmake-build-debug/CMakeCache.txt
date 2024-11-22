@@ -15,15 +15,15 @@
 ########################
 
 //Path to a program.
-CMAKE_ADDR2LINE:FILEPATH=C:/software/useful/STMicroelectronics/STM32Cube/STM32CubeCLT/GNU-tools-for-STM32/bin/arm-none-eabi-addr2line.exe
+CMAKE_ADDR2LINE:FILEPATH=C:/software/useful/ARM GNU Toolchain/13.3 rel1/bin/arm-none-eabi-addr2line.exe
 
 //A wrapper around 'ar' adding the appropriate '--plugin' option
 // for the GCC compiler
-CMAKE_ASM_COMPILER_AR:FILEPATH=C:/software/useful/STMicroelectronics/STM32Cube/STM32CubeCLT/GNU-tools-for-STM32/bin/arm-none-eabi-gcc-ar.exe
+CMAKE_ASM_COMPILER_AR:FILEPATH=C:/software/useful/ARM GNU Toolchain/13.3 rel1/bin/arm-none-eabi-gcc-ar.exe
 
 //A wrapper around 'ranlib' adding the appropriate '--plugin' option
 // for the GCC compiler
-CMAKE_ASM_COMPILER_RANLIB:FILEPATH=C:/software/useful/STMicroelectronics/STM32Cube/STM32CubeCLT/GNU-tools-for-STM32/bin/arm-none-eabi-gcc-ranlib.exe
+CMAKE_ASM_COMPILER_RANLIB:FILEPATH=C:/software/useful/ARM GNU Toolchain/13.3 rel1/bin/arm-none-eabi-gcc-ranlib.exe
 
 //Flags used by the ASM compiler during all build types.
 CMAKE_ASM_FLAGS:STRING=
@@ -48,15 +48,15 @@ CMAKE_BUILD_TYPE:STRING=Debug
 CMAKE_COLOR_DIAGNOSTICS:BOOL=ON
 
 //CXX compiler
-CMAKE_CXX_COMPILER:STRING=C:/software/useful/STMicroelectronics/STM32Cube/STM32CubeCLT/GNU-tools-for-STM32/bin/arm-none-eabi-g++.exe
+CMAKE_CXX_COMPILER:STRING=C:/software/useful/ARM GNU Toolchain/13.3 rel1/bin/arm-none-eabi-g++.exe
 
 //A wrapper around 'ar' adding the appropriate '--plugin' option
 // for the GCC compiler
-CMAKE_CXX_COMPILER_AR:FILEPATH=C:/software/useful/STMicroelectronics/STM32Cube/STM32CubeCLT/GNU-tools-for-STM32/bin/arm-none-eabi-gcc-ar.exe
+CMAKE_CXX_COMPILER_AR:FILEPATH=C:/software/useful/ARM GNU Toolchain/13.3 rel1/bin/arm-none-eabi-gcc-ar.exe
 
 //A wrapper around 'ranlib' adding the appropriate '--plugin' option
 // for the GCC compiler
-CMAKE_CXX_COMPILER_RANLIB:FILEPATH=C:/software/useful/STMicroelectronics/STM32Cube/STM32CubeCLT/GNU-tools-for-STM32/bin/arm-none-eabi-gcc-ranlib.exe
+CMAKE_CXX_COMPILER_RANLIB:FILEPATH=C:/software/useful/ARM GNU Toolchain/13.3 rel1/bin/arm-none-eabi-gcc-ranlib.exe
 
 //Flags used by the CXX compiler during all build types.
 CMAKE_CXX_FLAGS:STRING=-mcpu=cortex-m4  -mthumb -mthumb-interwork -ffunction-sections -fdata-sections     -g -fno-common -fmessage-length=0 -specs=nosys.specs -specs=nano.specs -std=c++11
@@ -74,15 +74,15 @@ CMAKE_CXX_FLAGS_RELEASE:STRING=-O3 -DNDEBUG
 CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG
 
 //C compiler
-CMAKE_C_COMPILER:STRING=C:/software/useful/STMicroelectronics/STM32Cube/STM32CubeCLT/GNU-tools-for-STM32/bin/arm-none-eabi-gcc.exe
+CMAKE_C_COMPILER:STRING=C:/software/useful/ARM GNU Toolchain/13.3 rel1/bin/arm-none-eabi-gcc.exe
 
 //A wrapper around 'ar' adding the appropriate '--plugin' option
 // for the GCC compiler
-CMAKE_C_COMPILER_AR:FILEPATH=C:/software/useful/STMicroelectronics/STM32Cube/STM32CubeCLT/GNU-tools-for-STM32/bin/arm-none-eabi-gcc-ar.exe
+CMAKE_C_COMPILER_AR:FILEPATH=C:/software/useful/ARM GNU Toolchain/13.3 rel1/bin/arm-none-eabi-gcc-ar.exe
 
 //A wrapper around 'ranlib' adding the appropriate '--plugin' option
 // for the GCC compiler
-CMAKE_C_COMPILER_RANLIB:FILEPATH=C:/software/useful/STMicroelectronics/STM32Cube/STM32CubeCLT/GNU-tools-for-STM32/bin/arm-none-eabi-gcc-ranlib.exe
+CMAKE_C_COMPILER_RANLIB:FILEPATH=C:/software/useful/ARM GNU Toolchain/13.3 rel1/bin/arm-none-eabi-gcc-ranlib.exe
 
 //Flags used by the C compiler during all build types.
 CMAKE_C_FLAGS:STRING=-mcpu=cortex-m4  -mthumb -mthumb-interwork -ffunction-sections -fdata-sections     -g -fno-common -fmessage-length=0 -specs=nosys.specs -specs=nano.specs -std=gnu99
@@ -117,9 +117,6 @@ CMAKE_EXE_LINKER_FLAGS_RELEASE:STRING=
 //Flags used by the linker during RELWITHDEBINFO builds.
 CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 
-//Enable/Disable output of compile commands during generation.
-CMAKE_EXPORT_COMPILE_COMMANDS:BOOL=
-
 //Value Computed by CMake.
 CMAKE_FIND_PACKAGE_REDIRECTS_DIR:STATIC=D:/Data/SJTU/Robomaster/CLionProjects/RM2025_School_Comp_Frame/cmake-build-debug/CMakeFiles/pkgRedirects
 
@@ -127,10 +124,10 @@ CMAKE_FIND_PACKAGE_REDIRECTS_DIR:STATIC=D:/Data/SJTU/Robomaster/CLionProjects/RM
 CMAKE_INSTALL_PREFIX:PATH=C:/Program Files (x86)/RM_Frame_C
 
 //Path to a program.
-CMAKE_LINKER:FILEPATH=C:/software/useful/STMicroelectronics/STM32Cube/STM32CubeCLT/GNU-tools-for-STM32/bin/arm-none-eabi-ld.exe
+CMAKE_LINKER:FILEPATH=C:/software/useful/ARM GNU Toolchain/13.3 rel1/bin/arm-none-eabi-ld.exe
 
-//No help, variable specified on the command line.
-CMAKE_MAKE_PROGRAM:UNINITIALIZED=C:/Users/kentl/AppData/Local/Programs/CLion/bin/ninja/win/x64/ninja.exe
+//Path to a program.
+CMAKE_MAKE_PROGRAM:FILEPATH=C:/Users/kentl/AppData/Local/Programs/CLion/bin/mingw/bin/mingw32-make.exe
 
 //Flags used by the linker during the creation of modules during
 // all build types.
@@ -153,7 +150,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELEASE:STRING=
 CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 
 //Path to a program.
-CMAKE_NM:FILEPATH=C:/software/useful/STMicroelectronics/STM32Cube/STM32CubeCLT/GNU-tools-for-STM32/bin/arm-none-eabi-nm.exe
+CMAKE_NM:FILEPATH=C:/software/useful/ARM GNU Toolchain/13.3 rel1/bin/arm-none-eabi-nm.exe
 
 //Value Computed by CMake
 CMAKE_PROJECT_DESCRIPTION:STATIC=
@@ -165,10 +162,10 @@ CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 CMAKE_PROJECT_NAME:STATIC=RM_Frame_C
 
 //Path to a program.
-CMAKE_RANLIB:FILEPATH=C:/software/useful/STMicroelectronics/STM32Cube/STM32CubeCLT/GNU-tools-for-STM32/bin/arm-none-eabi-ranlib.exe
+CMAKE_RANLIB:FILEPATH=C:/software/useful/ARM GNU Toolchain/13.3 rel1/bin/arm-none-eabi-ranlib.exe
 
 //Path to a program.
-CMAKE_READELF:FILEPATH=C:/software/useful/STMicroelectronics/STM32Cube/STM32CubeCLT/GNU-tools-for-STM32/bin/arm-none-eabi-readelf.exe
+CMAKE_READELF:FILEPATH=C:/software/useful/ARM GNU Toolchain/13.3 rel1/bin/arm-none-eabi-readelf.exe
 
 //Flags used by the linker during the creation of shared libraries
 // during all build types.
@@ -218,7 +215,7 @@ CMAKE_STATIC_LINKER_FLAGS_RELEASE:STRING=
 CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 
 //Path to a program.
-CMAKE_STRIP:FILEPATH=C:/software/useful/STMicroelectronics/STM32Cube/STM32CubeCLT/GNU-tools-for-STM32/bin/arm-none-eabi-strip.exe
+CMAKE_STRIP:FILEPATH=C:/software/useful/ARM GNU Toolchain/13.3 rel1/bin/arm-none-eabi-strip.exe
 
 //Path to a program.
 CMAKE_TAPI:FILEPATH=CMAKE_TAPI-NOTFOUND
@@ -320,12 +317,10 @@ CMAKE_EXE_LINKER_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1
 CMAKE_EXE_LINKER_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO
 CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_EXPORT_COMPILE_COMMANDS
-CMAKE_EXPORT_COMPILE_COMMANDS-ADVANCED:INTERNAL=1
 //Name of external makefile project generator.
 CMAKE_EXTRA_GENERATOR:INTERNAL=
 //Name of generator.
-CMAKE_GENERATOR:INTERNAL=Ninja
+CMAKE_GENERATOR:INTERNAL=MinGW Makefiles
 //Generator instance identifier.
 CMAKE_GENERATOR_INSTANCE:INTERNAL=
 //Name of generator platform.
@@ -337,6 +332,8 @@ CMAKE_GENERATOR_TOOLSET:INTERNAL=
 CMAKE_HOME_DIRECTORY:INTERNAL=D:/Data/SJTU/Robomaster/CLionProjects/RM2025_School_Comp_Frame
 //ADVANCED property for variable: CMAKE_LINKER
 CMAKE_LINKER-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_MAKE_PROGRAM
+CMAKE_MAKE_PROGRAM-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_MODULE_LINKER_FLAGS
 CMAKE_MODULE_LINKER_FLAGS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_MODULE_LINKER_FLAGS_DEBUG
