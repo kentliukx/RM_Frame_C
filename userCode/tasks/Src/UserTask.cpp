@@ -4,6 +4,15 @@
 #include "UserTask.h"
 #include "ControlTask.h"
 
+enum two_switch_state
+{
+    up=0x0161,
+    down=0x069E
+};
+
+two_switch_state left_switch,right_switch;
+int16_t collect_speed=0, best_elevate_speed=-175;
+
 PID_Regulator_t userPidRegulator = {
         .kp = 60,
         .ki = 0,
@@ -40,59 +49,73 @@ void UserInit(){
     UserMotor_collect.SetTargetSpeed(0);
 }
 
+
+
 /***
  * 用户自定义任务主循环
  */
-enum two_switch_state
+
+
+void UserMotorHandle()
 {
-    up=0x0161,
-    down=0x069E
-};
+    if (RemoteControl::rcInfo.sLeft == DOWN_POS)//collect setting mode
+    {
+        UserMotor_elevate.SetTargetSpeed(0);
+        if(left_switch==up)
+        {
+            collect_speed=RemoteControl::rcInfo.right_col*250;
+            UserMotor_collect.SetTargetSpeed(collect_speed);
+        }
+        else UserMotor_collect.SetTargetSpeed(0);
+    }
+    else if(left_switch==up)
+        UserMotor_collect.SetTargetSpeed(collect_speed);
+    else
+        UserMotor_collect.SetTargetSpeed(0);
 
-two_switch_state left_switch,right_switch;
-int16_t collect_speed=0, best_elevate_speed=-175;
+    if (right_switch==up)//auto elevate
+    {
+        UserMotor_elevate.SetTargetSpeed(best_elevate_speed);
+    }
+    else if (RemoteControl::rcInfo.sLeft == MID_POS)//elevate mode
+    {
+        UserMotor_elevate.SetTargetSpeed(RemoteControl::rcInfo.right_col*250);
+    }
+    else
+    {
+        UserMotor_elevate.SetTargetSpeed(0);
+    }
+    UserMotor_collect.Handle();
+    UserMotor_elevate.Handle();
+}
 
-void UserHandle(){
+void UserClimb()
+{
+
+}
+
+void UserHandle()
+{
     left_switch=(two_switch_state)RemoteControl::rcInfo.optional[0];
     right_switch=(two_switch_state)RemoteControl::rcInfo.optional[1];
+
     if (RemoteControl::rcInfo.right_col>1.1||RemoteControl::rcInfo.right_col<-1.1)//not connected
     {
         UserStop();
     }
-    else
+    else if(RemoteControl::rcInfo.sRight==DOWN_POS)//stop all motors
     {
-
-        if (RemoteControl::rcInfo.sLeft == DOWN_POS)//collect setting mode
-        {
-            UserMotor_elevate.SetTargetSpeed(0);
-            if(left_switch==up)
-            {
-                collect_speed=RemoteControl::rcInfo.right_col*250;
-                UserMotor_collect.SetTargetSpeed(collect_speed);
-            }
-            else UserMotor_collect.SetTargetSpeed(0);
-        }
-        else if(left_switch==up)
-            UserMotor_collect.SetTargetSpeed(collect_speed);
-        else
-            UserMotor_collect.SetTargetSpeed(0);
-
-        if (right_switch==up)//auto elevate
-        {
-            UserMotor_elevate.SetTargetSpeed(best_elevate_speed);
-        }
-        else if (RemoteControl::rcInfo.sLeft == MID_POS)//elevate mode
-        {
-            UserMotor_elevate.SetTargetSpeed(RemoteControl::rcInfo.right_col*250);
-        }
-        else
-        {
-            UserMotor_elevate.SetTargetSpeed(0);
-        }
-
-
+        UserStop();
     }
-    UserMotor_collect.Handle();
-    UserMotor_elevate.Handle();
+    else if(RemoteControl::rcInfo.sRight==MID_POS)
+    {
+        UserMotorHandle();
+    }
+    else if(RemoteControl::rcInfo.sRight==UP_POS)
+    {
+        UserStop();
+        UserClimb();
+    }
 
 }
+
