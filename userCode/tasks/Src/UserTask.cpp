@@ -36,25 +36,62 @@ void UserStop(){
  * 在这里写入初始化内容
  */
 void UserInit(){
-
+    UserMotor_elevate.SetTargetSpeed(0);
+    UserMotor_collect.SetTargetSpeed(0);
 }
 
 /***
  * 用户自定义任务主循环
  */
+enum two_switch_state
+{
+    up=0x0161,
+    down=0x069E
+};
+
+two_switch_state left_switch,right_switch;
+int16_t collect_speed=0, best_elevate_speed=-175;
+
 void UserHandle(){
-    if (RemoteControl::rcInfo.sLeft == DOWN_POS)//collect mode
+    left_switch=(two_switch_state)RemoteControl::rcInfo.optional[0];
+    right_switch=(two_switch_state)RemoteControl::rcInfo.optional[1];
+    if (RemoteControl::rcInfo.right_col>1.1||RemoteControl::rcInfo.right_col<-1.1)//not connected
     {
-        UserMotor_collect.SetTargetSpeed(RemoteControl::rcInfo.right_col*300);
-        UserMotor_elevate.SetTargetSpeed(0);
+        UserStop();
     }
-    else if (RemoteControl::rcInfo.sLeft == MID_POS)//elevate mode
+    else
     {
-        UserMotor_elevate.SetTargetSpeed(RemoteControl::rcInfo.right_col*500);
+
+        if (RemoteControl::rcInfo.sLeft == DOWN_POS)//collect setting mode
+        {
+            UserMotor_elevate.SetTargetSpeed(0);
+            if(left_switch==up)
+            {
+                collect_speed=RemoteControl::rcInfo.right_col*250;
+                UserMotor_collect.SetTargetSpeed(collect_speed);
+            }
+            else UserMotor_collect.SetTargetSpeed(0);
+        }
+        else if(left_switch==up)
+            UserMotor_collect.SetTargetSpeed(collect_speed);
+        else
+            UserMotor_collect.SetTargetSpeed(0);
+
+        if (right_switch==up)//auto elevate
+        {
+            UserMotor_elevate.SetTargetSpeed(best_elevate_speed);
+        }
+        else if (RemoteControl::rcInfo.sLeft == MID_POS)//elevate mode
+        {
+            UserMotor_elevate.SetTargetSpeed(RemoteControl::rcInfo.right_col*250);
+        }
+        else
+        {
+            UserMotor_elevate.SetTargetSpeed(0);
+        }
+
+
     }
-
-    if(RemoteControl::rcInfo.right_col<-1.1) UserStop();//stop
-
     UserMotor_collect.Handle();
     UserMotor_elevate.Handle();
 

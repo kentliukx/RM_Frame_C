@@ -80,10 +80,10 @@ void WheelsSpeedCalc(float fbVelocity, float lrVelocity, float rtVelocity) {
      */
 
 
-    CMFLSpeed = 0.5*(fbVelocity+rtVelocity-lrVelocity);
-    CMFRSpeed = 0.5*(-fbVelocity+rtVelocity-lrVelocity);
-    CMBLSpeed = 0.5*(fbVelocity+rtVelocity+lrVelocity);
-    CMBRSpeed = 0.5*(-fbVelocity+rtVelocity+lrVelocity);
+    CMFLSpeed = 0.5*(-fbVelocity+0.5*rtVelocity+lrVelocity);
+    CMFRSpeed = 0.5*(fbVelocity+0.5*rtVelocity+lrVelocity);
+    CMBLSpeed = 0.5*(-fbVelocity+0.5*rtVelocity-lrVelocity);
+    CMBRSpeed = 0.5*(fbVelocity+0.5*rtVelocity-lrVelocity);
 
     //计算四个轮子角速度，单位：rad/s
     CMFLSpeed = CMFLSpeed /(WHEEL_DIAMETER/2.0f);
