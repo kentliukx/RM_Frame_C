@@ -88,7 +88,7 @@ extern UART_HandleTypeDef huart6;
 /* USER CODE END EV */
 
 /******************************************************************************/
-/*           Cortex-M4 Processor Interruption and Exception Handlers          */ 
+/*           Cortex-M4 Processor Interruption and Exception Handlers          */
 /******************************************************************************/
 /**
   * @brief This function handles Non maskable interrupt.
@@ -308,19 +308,19 @@ void USART1_IRQHandler(void)
   /* USER CODE END USART1_IRQn 1 */
 }
 
-///**
-//  * @brief This function handles USART3 global interrupt.
-//  */
-//void USART3_IRQHandler(void)
-//{
-//  /* USER CODE BEGIN USART3_IRQn 0 */
+/**
+  * @brief This function handles USART3 global interrupt.
+  */
+void USART3_IRQHandler(void)
+{
+  /* USER CODE BEGIN USART3_IRQn 0 */
 //
-//  /* USER CODE END USART3_IRQn 0 */
-//    HAL_UART_IRQHandler(&huart3);
-//  /* USER CODE BEGIN USART3_IRQn 1 */
+  /* USER CODE END USART3_IRQn 0 */
+  HAL_UART_IRQHandler(&huart3);
+  /* USER CODE BEGIN USART3_IRQn 1 */
 //
-//  /* USER CODE END USART3_IRQn 1 */
-//}
+  /* USER CODE END USART3_IRQn 1 */
+}
 
 /**
   * @brief This function handles DMA2 stream2 global interrupt.

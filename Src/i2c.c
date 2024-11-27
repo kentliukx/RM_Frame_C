@@ -6,7 +6,7 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; Copyright (c) 2021 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2024 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under Ultimate Liberty license
@@ -55,12 +55,12 @@ void HAL_I2C_MspInit(I2C_HandleTypeDef* i2cHandle)
   /* USER CODE BEGIN I2C3_MspInit 0 */
 
   /* USER CODE END I2C3_MspInit 0 */
-  
+
     __HAL_RCC_GPIOC_CLK_ENABLE();
     __HAL_RCC_GPIOA_CLK_ENABLE();
-    /**I2C3 GPIO Configuration    
+    /**I2C3 GPIO Configuration
     PC9     ------> I2C3_SDA
-    PA8     ------> I2C3_SCL 
+    PA8     ------> I2C3_SCL
     */
     GPIO_InitStruct.Pin = GPIO_PIN_9;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
@@ -94,10 +94,10 @@ void HAL_I2C_MspDeInit(I2C_HandleTypeDef* i2cHandle)
   /* USER CODE END I2C3_MspDeInit 0 */
     /* Peripheral clock disable */
     __HAL_RCC_I2C3_CLK_DISABLE();
-  
-    /**I2C3 GPIO Configuration    
+
+    /**I2C3 GPIO Configuration
     PC9     ------> I2C3_SDA
-    PA8     ------> I2C3_SCL 
+    PA8     ------> I2C3_SCL
     */
     HAL_GPIO_DeInit(GPIOC, GPIO_PIN_9);
 
@@ -107,7 +107,7 @@ void HAL_I2C_MspDeInit(I2C_HandleTypeDef* i2cHandle)
 
   /* USER CODE END I2C3_MspDeInit 1 */
   }
-} 
+}
 
 /* USER CODE BEGIN 1 */
 

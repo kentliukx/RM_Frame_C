@@ -3,6 +3,8 @@
 //
 #include "UserTask.h"
 #include "ControlTask.h"
+#include "main.h"
+#include "stm32f4xx_hal_gpio.h"
 
 enum two_switch_state
 {
@@ -47,6 +49,11 @@ void UserStop(){
 void UserInit(){
     UserMotor_elevate.SetTargetSpeed(0);
     UserMotor_collect.SetTargetSpeed(0);
+
+    HAL_GPIO_WritePin(PIN1_GPIO_Port,PIN1_Pin,GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(PIN3_GPIO_Port,PIN3_Pin,GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(PIN5_GPIO_Port,PIN5_Pin,GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(PIN7_GPIO_Port,PIN7_Pin,GPIO_PIN_RESET);
 }
 
 
@@ -91,7 +98,31 @@ void UserMotorHandle()
 
 void UserClimb()
 {
+    if(RemoteControl::rcInfo.sLeft == UP_POS)
+    {
+        //left ctrl
+        HAL_GPIO_WritePin(PIN1_GPIO_Port,PIN1_Pin,GPIO_PIN_SET);
+        HAL_GPIO_WritePin(PIN3_GPIO_Port,PIN3_Pin,GPIO_PIN_RESET);
+        //right ctrl
+        HAL_GPIO_WritePin(PIN5_GPIO_Port,PIN5_Pin,GPIO_PIN_SET);
+        HAL_GPIO_WritePin(PIN7_GPIO_Port,PIN7_Pin,GPIO_PIN_RESET);
+    }
+    else if(RemoteControl::rcInfo.sLeft == DOWN_POS)
+    {
+        HAL_GPIO_WritePin(PIN1_GPIO_Port,PIN1_Pin,GPIO_PIN_RESET);
+        HAL_GPIO_WritePin(PIN3_GPIO_Port,PIN3_Pin,GPIO_PIN_SET);
 
+        HAL_GPIO_WritePin(PIN5_GPIO_Port,PIN5_Pin,GPIO_PIN_RESET);
+        HAL_GPIO_WritePin(PIN7_GPIO_Port,PIN7_Pin,GPIO_PIN_SET);
+    }
+    else
+    {
+        //stop
+        HAL_GPIO_WritePin(PIN1_GPIO_Port,PIN1_Pin,GPIO_PIN_RESET);
+        HAL_GPIO_WritePin(PIN3_GPIO_Port,PIN3_Pin,GPIO_PIN_RESET);
+        HAL_GPIO_WritePin(PIN5_GPIO_Port,PIN5_Pin,GPIO_PIN_RESET);
+        HAL_GPIO_WritePin(PIN7_GPIO_Port,PIN7_Pin,GPIO_PIN_RESET);
+    }
 }
 
 void UserHandle()

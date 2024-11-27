@@ -59,7 +59,7 @@ CMAKE_CXX_COMPILER_AR:FILEPATH=C:/software/useful/ARM GNU Toolchain/13.3 rel1/bi
 CMAKE_CXX_COMPILER_RANLIB:FILEPATH=C:/software/useful/ARM GNU Toolchain/13.3 rel1/bin/arm-none-eabi-gcc-ranlib.exe
 
 //Flags used by the CXX compiler during all build types.
-CMAKE_CXX_FLAGS:STRING=-mcpu=cortex-m4  -mthumb -mthumb-interwork -ffunction-sections -fdata-sections     -g -fno-common -fmessage-length=0 -specs=nosys.specs -specs=nano.specs -std=c++11
+CMAKE_CXX_FLAGS:STRING=-mcpu=cortex-m4  -mthumb -mthumb-interwork -ffunction-sections -fdata-sections     -g -fno-common -fmessage-length=0  -std=c++11
 
 //Flags used by the CXX compiler during DEBUG builds.
 CMAKE_CXX_FLAGS_DEBUG:STRING=-g
@@ -85,7 +85,7 @@ CMAKE_C_COMPILER_AR:FILEPATH=C:/software/useful/ARM GNU Toolchain/13.3 rel1/bin/
 CMAKE_C_COMPILER_RANLIB:FILEPATH=C:/software/useful/ARM GNU Toolchain/13.3 rel1/bin/arm-none-eabi-gcc-ranlib.exe
 
 //Flags used by the C compiler during all build types.
-CMAKE_C_FLAGS:STRING=-mcpu=cortex-m4  -mthumb -mthumb-interwork -ffunction-sections -fdata-sections     -g -fno-common -fmessage-length=0 -specs=nosys.specs -specs=nano.specs -std=gnu99
+CMAKE_C_FLAGS:STRING=-mcpu=cortex-m4  -mthumb -mthumb-interwork -ffunction-sections -fdata-sections     -g -fno-common -fmessage-length=0  -std=gnu99
 
 //Flags used by the C compiler during DEBUG builds.
 CMAKE_C_FLAGS_DEBUG:STRING=-g
@@ -103,7 +103,7 @@ CMAKE_C_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG
 CMAKE_DLLTOOL:FILEPATH=C:/Users/kentl/AppData/Local/Programs/CLion/bin/mingw/bin/dlltool.exe
 
 //Flags used by the linker during all build types.
-CMAKE_EXE_LINKER_FLAGS:STRING=-Wl,-gc-sections,--print-memory-usage -T D:/Data/SJTU/Robomaster/CLionProjects/RM2025_School_Comp_Frame/STM32F407IGHx_FLASH.ld
+CMAKE_EXE_LINKER_FLAGS:STRING=-Wl,-gc-sections,--print-memory-usage -T D:/Data/SJTU/Robomaster/CLionProjects/RM2025_School_Comp_Frame/STM32F407IGHX_FLASH.ld
 
 //Flags used by the linker during DEBUG builds.
 CMAKE_EXE_LINKER_FLAGS_DEBUG:STRING=
