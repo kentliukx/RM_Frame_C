@@ -13,7 +13,7 @@ enum two_switch_state
 };
 
 two_switch_state left_switch,right_switch;
-int16_t collect_speed=0, best_elevate_speed=-175;
+int16_t collect_speed=0, best_elevate_speed=-185;
 
 PID_Regulator_t userPidRegulator = {
         .kp = 60,
@@ -84,7 +84,7 @@ void UserMotorHandle()
     {
         UserMotor_elevate.SetTargetSpeed(best_elevate_speed);
     }
-    else if (RemoteControl::rcInfo.sLeft == MID_POS)//elevate mode
+    else if (RemoteControl::rcInfo.sLeft == UP_POS)//elevate mode
     {
         UserMotor_elevate.SetTargetSpeed(RemoteControl::rcInfo.right_col*250);
     }
